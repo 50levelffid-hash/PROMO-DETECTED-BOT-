@@ -6,6 +6,21 @@
  */
 
 const { Telegraf } = require('telegraf');
+const http = require('http');
+
+// ── Dummy HTTP server ────────────────────────────────────────────
+// Render's "Web Service" type expects an open port to confirm the app
+// started. The bot itself only polls Telegram and needs no HTTP server,
+// so this just satisfies Render's port check and avoids "No open ports
+// detected" timeouts. (If you switch this service to a "Background
+// Worker" on Render, you can safely remove this block.)
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('GalaxyBot is running.');
+}).listen(PORT, () => {
+  console.log(`🌐 Dummy HTTP server listening on port ${PORT} (for Render health check)`);
+});
 
 // ── Handlers ──────────────────────────────────────────────────────
 const { startCommand, aboutCommand, donateCommand, buttonCallback } = require('./handlers/start');
