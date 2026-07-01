@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 // ========== CONFIG ==========
-const BOT_TOKEN = process.env.BOT_TOKEN || 'YOUR_BOT_TOKEN';
+const BOT_TOKEN = process.env.BOT_TOKEN || '8282366957:AAEFm71AO2dEXh7lkawP-y4-FnH6hTq7Cy8';
 const SUPER_ADMIN_ID = parseInt(process.env.SUPER_ADMIN_ID || '0', 10);
 const DATA_FILE = path.join(__dirname, 'bot_data.json');
 
